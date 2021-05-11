@@ -1,0 +1,32 @@
+@import "globals";
+@import "lightbox.min";
+@import "gallery";
+@import "variables";
+
+body {
+  font-family: "Oswald", sans-serif;
+  font-family: "Quicksand", sans-serif;
+}
+
+.today {
+  width: 100%;
+  max-width: 18.75rem;
+  margin: 0px auto;
+}
+
+.item:hover {
+  opacity: 0.75;
+}
+
+@media (max-width: 993px) {
+  .small_center {
+    text-align: center;
+  }
+  .hide {
+    display: none;
+  }
+}
+
+.todayWidth {
+  max-width: 62.5rem;
+}

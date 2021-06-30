@@ -15,7 +15,7 @@
     
         if (in_array($FileActualExt, $allowedExt)){
             if ($fileError === 0){
-                if ($fileSize < 1000000) {
+                if ($fileSize < 10000000) {
                     $fileNameNew = uniqid('', true).".".$FileActualExt;
                     $fileDest = 'uploads/'.$fileNameNew;
                     move_uploaded_file($fileTmpName, $fileDest);

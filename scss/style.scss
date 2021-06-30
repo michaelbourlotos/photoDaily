@@ -2,6 +2,9 @@
 @import "lightbox.min";
 @import "gallery";
 @import "variables";
+@import "slick";
+@import "slick-theme";
+
 
 body {
   font-family: "Oswald", sans-serif;
@@ -29,4 +32,13 @@ body {
 
 .todayWidth {
   max-width: 62.5rem;
+}
+
+.slider {
+  padding: 5%;
+  align-items: center;
+}
+
+.slide-image {
+  max-height: 500px;
 }

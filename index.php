@@ -7,8 +7,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Quicksand&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
     <link rel="stylesheet" href="dist/style.css">
-    <title>Photo A Day</title>
+
+    <title>Ya bishhhhh</title>
 </head>
 <body>
     <!-- Navbar -->
@@ -20,21 +24,57 @@
     
           <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
             <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.php#gallery">Gallery</a>
+              </li>
               <li class="nav-item ">
                 <a class="nav-link active" style="aria-current="page" href="#">Photo A Day</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php#gallery">Gallery</a>
+                <a class="nav-link" href="index.php#gallery">Contact</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="index.php#gallery">Favorites</a>
-              </li
+            
             </ul>
           </div>
         </div>
       </nav>
 <!-- end navbar  -->
 
+<!-- carousel -->
+
+
+
+
+<div class="slider bg-secondary">
+<div class="center">
+<?php
+            include_once 'dbh.php';
+
+            $sql = "SELECT * FROM photos ORDER BY orderPhotos DESC";
+            $stmt = mysqli_stmt_init($conn);
+            if (!mysqli_stmt_prepare($stmt,$sql)){
+              echo "SQL statement failed";
+            } else {
+              mysqli_stmt_execute($stmt);
+              $result = mysqli_stmt_get_result($stmt);
+
+              while ($row = mysqli_fetch_assoc($result)) {
+                echo '<div><a href="uploads/'.$row["fileFullNamePhotos"].'" data-lightbox="photos" data-title="'.$row["titlePhotos"].' | '.$row["datePhotos"].'"><img class="img-fluid slide-image" src="uploads/'.$row["fileFullNamePhotos"].'"></a></div>';
+              
+              }
+            }
+
+            ?>
+</div>
+</div>
+
+
+
+
+
+
+
+<!-- end carousel -->
 
 
   <!--hero section  -->
@@ -134,10 +174,47 @@
 <!-- Footer -->
 
 <!-- end footer -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>  
+
 <script src="js/lightbox.min.js"></script>
 <script src="js/main.js"></script>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+        $('.center').slick({
+          centerMode: true,
+          arrows: true,
+          
+  slidesToShow: 3,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: true,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: true ,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+        });
+</script>		
+
+
+
 </body>
 </html>

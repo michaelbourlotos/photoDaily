@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="dist/style.css">
 
-    <title>Ya bishhhhh</title>
+    <title>Photo A DAY</title>
 </head>
 <body>
     <!-- Navbar -->
